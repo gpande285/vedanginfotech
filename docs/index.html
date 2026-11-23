@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vedang Infotech — Computer, German &amp; Software Training, Pune</title>
+<meta name="description" content="Vedang Infotech: Computer training, German language courses, software & app development, and website development in Pune.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12171D;
+    --ink-2:#1B222A;
+    --ink-3:#242D37;
+    --paper:#EFE7D3;
+    --paper-2:#E6DCC1;
+    --saffron:#E0912B;
+    --saffron-dark:#B9721A;
+    --teal:#2B7A6B;
+    --teal-dark:#1F5B50;
+    --crimson:#BD3B3B;
+    --gold:#D9A441;
+    --ink-text:#1E1A12;
+    --muted:#6B6252;
+    --paper-line: rgba(30,26,18,0.14);
+    --cream-on-ink: #EFE7D3;
+    --dim-on-ink: rgba(239,231,211,0.62);
+    --radius: 4px;
+    --max: 1180px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--cream-on-ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+
+  ::selection{ background:var(--saffron); color:var(--ink); }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--saffron);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,23,29,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(239,231,211,0.1);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:38px; height:38px; border-radius:50%;
+    border:1.5px solid var(--saffron);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:14px;
+    color:var(--saffron);
+    flex-shrink:0;
+  }
+  .brand-name{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:16.5px; letter-spacing:0.01em; }
+  .brand-name span{ color:var(--saffron); }
+  .nav-links{ display:flex; gap:30px; align-items:center; }
+  .nav-links a{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.04em;
+    text-transform:uppercase; color:var(--dim-on-ink);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{ color:var(--cream-on-ink); }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px; border-radius:2px;
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.03em;
+    text-transform:uppercase; font-weight:500;
+    cursor:pointer; border:none;
+  }
+  .btn-primary{ background:var(--saffron); color:var(--ink); }
+  .btn-primary:hover{ background:var(--gold); }
+  .btn-outline{
+    background:transparent; color:var(--cream-on-ink);
+    border:1px solid rgba(239,231,211,0.35);
+  }
+  .btn-outline:hover{ border-color:var(--saffron); color:var(--saffron); }
+  .nav-cta{ display:flex; }
+  @media (max-width:760px){
+    .nav-links{ display:none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:96px 28px 80px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 700px 420px at 82% -10%, rgba(224,145,43,0.16), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 5% 110%, rgba(43,122,107,0.14), transparent 60%),
+      var(--ink);
+  }
+  .hero-inner{ max-width:var(--max); margin:0 auto; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--saffron); display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{ content:''; width:22px; height:1px; background:var(--saffron); }
+  .hero h1{
+    font-size:clamp(38px, 6.4vw, 74px);
+    line-height:1.02;
+    font-weight:700;
+    max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(180deg, var(--saffron), var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{
+    margin-top:26px; max-width:520px;
+    font-size:17.5px; line-height:1.65;
+    color:var(--dim-on-ink);
+  }
+  .hero-ctas{ display:flex; gap:16px; margin-top:38px; flex-wrap:wrap; }
+
+  .hero-strip{
+    margin-top:72px;
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(239,231,211,0.14);
+    border-bottom:1px solid rgba(239,231,211,0.14);
+  }
+  .hero-strip div{
+    padding:18px 20px;
+    border-right:1px solid rgba(239,231,211,0.14);
+  }
+  .hero-strip div:last-child{ border-right:none; }
+  .hero-strip .k{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--dim-on-ink); }
+  .hero-strip .v{ font-family:'Space Grotesk', sans-serif; font-size:15.5px; font-weight:600; margin-top:6px; color:var(--cream-on-ink); }
+  @media (max-width:760px){
+    .hero-strip{ grid-template-columns:repeat(2,1fr); }
+    .hero-strip div:nth-child(2){ border-right:none; }
+  }
+
+  /* ---------- scrolling gallery ---------- */
+  .gallery{ padding:76px 0 84px; background:var(--ink); border-top:1px solid rgba(239,231,211,0.08); border-bottom:1px solid rgba(239,231,211,0.08); }
+  .gallery-head{ max-width:var(--max); margin:0 auto 40px; padding:0 28px; }
+  .gallery-head h2{ font-size:clamp(24px,3vw,34px); color:var(--cream-on-ink); font-weight:700; margin-top:12px; }
+  .marquee{ overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+  .marquee-track{ display:flex; gap:24px; width:max-content; padding:0 28px; animation:scroll-left 32s linear infinite; }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scroll-left{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{ animation:none; overflow-x:auto; }
+    .marquee{ overflow-x:auto; -webkit-mask-image:none; mask-image:none; }
+  }
+  .gallery-card{
+    flex:0 0 auto; width:300px; background:var(--ink-2); border:1px solid rgba(239,231,211,0.1);
+    border-radius:10px; overflow:hidden;
+  }
+  .gallery-card svg{ display:block; width:100%; height:190px; }
+  .gallery-card .cap{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 18px; border-top:1px solid rgba(239,231,211,0.08);
+  }
+  .gallery-card .cap .t{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:14.5px; color:var(--cream-on-ink); }
+  .gallery-card .cap .n{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--dim-on-ink); }
+
+  /* ---------- notice board / timetable ---------- */
+  .board{
+    background:var(--paper);
+    color:var(--ink-text);
+    padding:88px 28px 96px;
+  }
+  .board-head{ max-width:var(--max); margin:0 auto 48px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+  .board .eyebrow{ color:var(--teal-dark); }
+  .board .eyebrow::before{ background:var(--teal-dark); }
+  .board h2{ font-size:clamp(28px,3.6vw,42px); color:var(--ink-text); font-weight:700; }
+  .board-note{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--muted); max-width:280px; line-height:1.6; }
+
+  .tickets{ max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  @media (max-width:980px){ .tickets{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .tickets{ grid-template-columns:1fr; } }
+
+  .ticket{
+    background:var(--paper-2);
+    border:1.5px dashed rgba(30,26,18,0.28);
+    border-radius:6px;
+    padding:24px 20px 22px;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .ticket::before, .ticket::after{
+    content:''; position:absolute; width:18px; height:18px; border-radius:50%;
+    background:var(--paper); left:50%; transform:translateX(-50%);
+  }
+  .ticket::before{ top:-9px; }
+  .ticket::after{ bottom:-9px; }
+  .ticket:hover{ transform:translateY(-6px); border-color:var(--saffron-dark); box-shadow:0 14px 30px -14px rgba(30,26,18,0.35); }
+  .ticket .code{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.05em; color:var(--saffron-dark); font-weight:600; }
+  .ticket h3{ font-size:19px; margin-top:10px; color:var(--ink-text); font-weight:700; line-height:1.25; }
+  .ticket .desc{ margin-top:10px; font-size:13.5px; color:var(--muted); line-height:1.55; }
+  .ticket .batch{
+    margin-top:16px; padding-top:14px; border-top:1px dashed rgba(30,26,18,0.22);
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--teal-dark);
+  }
+
+  /* ---------- service sections shared ---------- */
+  .service{
+    padding:96px 28px;
+    border-bottom:1px solid rgba(239,231,211,0.08);
+  }
+  .service-inner{
+    max-width:var(--max); margin:0 auto;
+    display:grid; grid-template-columns:0.95fr 1.05fr; gap:64px; align-items:center;
+  }
+  .service.reverse .service-inner{ grid-template-columns:1.05fr 0.95fr; }
+  .service.reverse .service-copy{ order:2; }
+  .service.reverse .service-visual{ order:1; }
+  @media (max-width:900px){
+    .service-inner{ grid-template-columns:1fr !important; }
+    .service.reverse .service-copy, .service.reverse .service-visual{ order:initial; }
+  }
+  .service-tag{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; }
+  .service h2{ font-size:clamp(28px,3.4vw,40px); margin-top:14px; font-weight:700; color:var(--cream-on-ink); }
+  .service-copy p.lead{ margin-top:18px; font-size:16px; line-height:1.7; color:var(--dim-on-ink); max-width:44ch; }
+  .service-list{ list-style:none; padding:0; margin:26px 0 0; display:flex; flex-direction:column; gap:11px; }
+  .service-list li{ display:flex; align-items:flex-start; gap:12px; font-size:14.5px; color:var(--cream-on-ink); }
+  .tick{ flex-shrink:0; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-top:1px; font-size:11px; }
+
+  /* Computer training accents */
+  #computer .service-tag, #computer .tick{ color:var(--saffron); }
+  #computer .tick{ border:1.5px solid var(--saffron); }
+  .marksheet{
+    background:var(--ink-2); border:1px solid rgba(224,145,43,0.25); border-radius:8px; padding:26px 26px 22px;
+  }
+  .marksheet-head{ display:flex; justify-content:space-between; align-items:center; padding-bottom:16px; border-bottom:1px solid rgba(239,231,211,0.12); }
+  .marksheet-head .stamp{
+    width:52px; height:52px; border-radius:50%; border:2px solid var(--saffron); color:var(--saffron);
+    display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:9px; text-align:center; letter-spacing:0.02em; transform:rotate(-8deg);
+  }
+  .mrow{ display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px dashed rgba(239,231,211,0.12); font-size:13.5px; }
+  .mrow:last-child{ border-bottom:none; }
+  .mrow .grade{ font-family:'IBM Plex Mono', monospace; color:var(--saffron); font-weight:600; }
+
+  /* German accents + flashcards */
+  #german .service-tag, #german .tick{ color:var(--crimson); }
+  #german .tick{ border:1.5px solid var(--crimson); }
+  .flag-rule{ height:4px; width:64px; display:flex; margin-bottom:18px; border-radius:2px; overflow:hidden; }
+  .flag-rule span{ flex:1; }
+  .flag-rule span:nth-child(1){ background:#1a1a1a; }
+  .flag-rule span:nth-child(2){ background:var(--crimson); }
+  .flag-rule span:nth-child(3){ background:var(--gold); }
+  .flashcards{ display:flex; flex-direction:column; gap:16px; }
+  .flashcard{
+    perspective:1000px; height:88px; cursor:pointer;
+  }
+  .flashcard-inner{
+    position:relative; width:100%; height:100%; transition:transform .55s cubic-bezier(.2,.8,.2,1);
+    transform-style:preserve-3d;
+  }
+  .flashcard:hover .flashcard-inner, .flashcard.flipped .flashcard-inner{ transform:rotateY(180deg); }
+  .flashcard-face{
+    position:absolute; inset:0; backface-visibility:hidden;
+    border-radius:8px; border:1px solid rgba(239,231,211,0.15);
+    display:flex; flex-direction:column; justify-content:center; padding:0 22px;
+    background:var(--ink-2);
+  }
+  .flashcard-face.back{ transform:rotateY(180deg); background:var(--ink-3); }
+  .flashcard-face .de{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:18px; color:var(--cream-on-ink); }
+  .flashcard-face .hint{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--dim-on-ink); margin-top:4px; letter-spacing:0.04em; text-transform:uppercase; }
+  .flashcard-face .en{ font-size:15.5px; color:var(--gold); font-weight:500; }
+  .level-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:24px; }
+  .level{ text-align:center; padding:12px 6px; border:1px solid rgba(239,231,211,0.15); border-radius:6px; }
+  .level .lv{ font-family:'IBM Plex Mono', monospace; color:var(--crimson); font-weight:600; font-size:13px; }
+  .level .desc{ font-size:10.5px; color:var(--dim-on-ink); margin-top:5px; line-height:1.4; }
+
+  /* Dev accents + code editor */
+  #dev .service-tag, #dev .tick{ color:var(--teal); }
+  #dev .tick{ border:1.5px solid var(--teal); }
+  .editor{
+    background:#0E1317; border-radius:10px; overflow:hidden; border:1px solid rgba(43,122,107,0.3);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .editor-bar{ display:flex; align-items:center; gap:6px; padding:12px 16px; background:#151B20; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .editor-bar .dot{ width:10px; height:10px; border-radius:50%; }
+  .editor-bar .dot:nth-child(1){ background:#E0912B; }
+  .editor-bar .dot:nth-child(2){ background:#D9A441; }
+  .editor-bar .dot:nth-child(3){ background:#2B7A6B; }
+  .editor-tabs{ display:flex; gap:2px; margin-left:14px; }
+  .editor-tabs span{ font-family:'IBM Plex Mono', monospace; font-size:11px; padding:5px 11px; color:var(--dim-on-ink); border-radius:4px 4px 0 0; }
+  .editor-tabs span.active{ background:#0E1317; color:var(--teal); }
+  .editor-body{ padding:22px 22px 30px; font-family:'IBM Plex Mono', monospace; font-size:12.8px; line-height:1.85; min-height:210px; color:#B9C2C8; }
+  .editor-body .c1{ color:#6B7B7A; }
+  .editor-body .c2{ color:#E0912B; }
+  .editor-body .c3{ color:#2FA98F; }
+  .editor-body .c4{ color:#D9A441; }
+  .caret{ display:inline-block; width:7px; height:14px; background:var(--teal); vertical-align:middle; animation:blink 1s step-end infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  /* Website dev accents + browser mock */
+  #web .service-tag, #web .tick{ color:var(--gold); }
+  #web .tick{ border:1.5px solid var(--gold); }
+  .browser{
+    background:var(--ink-2); border-radius:10px; overflow:hidden; border:1px solid rgba(217,164,65,0.3);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .browser-bar{ display:flex; align-items:center; gap:10px; padding:12px 16px; background:#20262E; }
+  .browser-dots{ display:flex; gap:6px; }
+  .browser-dots span{ width:9px; height:9px; border-radius:50%; background:rgba(239,231,211,0.25); }
+  .browser-url{
+    flex:1; background:rgba(239,231,211,0.08); border-radius:20px; padding:6px 14px;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--dim-on-ink);
+  }
+  .browser-url b{ color:var(--gold); font-weight:500; }
+  .browser-body{ padding:24px; display:flex; flex-direction:column; gap:12px; }
+  .bb-hero{ height:64px; border-radius:6px; background:linear-gradient(120deg, rgba(217,164,65,0.22), rgba(43,122,107,0.18)); display:flex; flex-direction:column; justify-content:center; padding:0 18px; gap:6px; }
+  .bb-hero .l1{ width:52%; height:9px; border-radius:3px; background:rgba(239,231,211,0.4); }
+  .bb-hero .l2{ width:34%; height:7px; border-radius:3px; background:rgba(239,231,211,0.22); }
+  .bb-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  .bb-card{ height:52px; border-radius:6px; background:rgba(239,231,211,0.06); border:1px solid rgba(239,231,211,0.08); }
+
+  /* ---------- why strip ---------- */
+  .why{ padding:80px 28px; background:var(--ink-2); }
+  .why-grid{ max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
+  @media (max-width:760px){ .why-grid{ grid-template-columns:1fr; } }
+  .why-item .num{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--saffron); letter-spacing:0.08em; }
+  .why-item h3{ font-size:20px; margin-top:12px; font-weight:600; }
+  .why-item p{ margin-top:10px; font-size:14.5px; color:var(--dim-on-ink); line-height:1.65; max-width:34ch; }
+
+  /* ---------- contact ---------- */
+  .contact{ padding:100px 28px 60px; background:var(--ink); text-align:center; }
+  .contact-inner{ max-width:640px; margin:0 auto; }
+  .contact h2{ font-size:clamp(30px,4.4vw,48px); font-weight:700; }
+  .contact p.lead{ margin-top:18px; color:var(--dim-on-ink); font-size:16px; line-height:1.7; }
+  .contact-ctas{ display:flex; gap:16px; justify-content:center; margin-top:36px; flex-wrap:wrap; }
+  .contact-details{ margin-top:56px; display:flex; justify-content:center; gap:48px; flex-wrap:wrap; }
+  .cd-item .k{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--saffron); }
+  .cd-item .v{ margin-top:8px; font-size:14.5px; color:var(--cream-on-ink); }
+
+  footer{ padding:36px 28px; border-top:1px solid rgba(239,231,211,0.08); }
+  .footer-inner{ max-width:var(--max); margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .footer-inner p{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--dim-on-ink); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-mark">VI</div>
+      <div class="brand-name">VEDANG <span>INFOTECH</span></div>
+    </div>
+    <nav class="nav-links">
+      <a href="#courses">Courses</a>
+      <a href="#computer">Computer</a>
+      <a href="#german">German</a>
+      <a href="#dev">App Dev</a>
+      <a href="#web">Web Dev</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Enroll Now</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Pune · Training &amp; Software Studio</div>
+    <h1>Learn it.<br>Build it.<br><em>Ship it.</em></h1>
+    <p class="hero-sub">Vedang Infotech runs computer courses and German language batches on one side of the room, and builds apps and websites on the other. Same team, one address, four skills.</p>
+    <div class="hero-ctas">
+      <a href="#courses" class="btn btn-primary">View Courses</a>
+      <a href="#contact" class="btn btn-outline">Start a Project</a>
+    </div>
+    <div class="hero-strip reveal">
+      <div><div class="k">Track 01</div><div class="v">Computer Training</div></div>
+      <div><div class="k">Track 02</div><div class="v">German Language</div></div>
+      <div><div class="k">Track 03</div><div class="v">App Development</div></div>
+      <div><div class="k">Track 04</div><div class="v">Website Development</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="gallery-head reveal">
+    <div class="eyebrow">Inside Vedang</div>
+    <h2>A look at what we do</h2>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track" id="galleryTrack">
+
+      <div class="gallery-card">
+        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a computer training setup">
+          <rect x="0" y="0" width="300" height="190" fill="var(--ink-2)"/>
+          <rect x="66" y="34" width="168" height="98" rx="6" fill="none" stroke="var(--saffron)" stroke-width="2"/>
+          <rect x="78" y="46" width="144" height="66" fill="var(--saffron)" opacity="0.14"/>
+          <rect x="90" y="58" width="70" height="6" rx="3" fill="var(--saffron)"/>
+          <rect x="90" y="72" width="100" height="5" rx="2.5" fill="rgba(239,231,211,0.4)"/>
+          <rect x="90" y="84" width="86" height="5" rx="2.5" fill="rgba(239,231,211,0.4)"/>
+          <rect x="90" y="96" width="60" height="5" rx="2.5" fill="rgba(239,231,211,0.4)"/>
+          <rect x="140" y="132" width="20" height="12" fill="var(--ink-2)" stroke="var(--saffron)" stroke-width="2"/>
+          <rect x="112" y="144" width="76" height="7" rx="3.5" fill="var(--saffron)" opacity="0.6"/>
+          <rect x="86" y="158" width="128" height="16" rx="4" fill="none" stroke="rgba(239,231,211,0.3)" stroke-width="1.5"/>
+          <circle cx="220" cy="160" r="9" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <path d="M216 160l3 3 6-7" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="cap"><span class="t">Computer Training</span><span class="n mono">CRS-01</span></div>
+      </div>
+
+      <div class="gallery-card">
+        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a German language conversation bubble">
+          <rect x="0" y="0" width="300" height="190" fill="var(--ink-2)"/>
+          <path d="M60 44h180a10 10 0 0 1 10 10v58a10 10 0 0 1-10 10H132l-24 20v-20H60a10 10 0 0 1-10-10V54a10 10 0 0 1 10-10z" fill="none" stroke="var(--crimson)" stroke-width="2"/>
+          <rect x="82" y="66" width="46" height="7" rx="3.5" fill="#1a1a1a"/>
+          <rect x="82" y="76" width="46" height="7" rx="3.5" fill="var(--crimson)"/>
+          <rect x="82" y="86" width="46" height="7" rx="3.5" fill="var(--gold)"/>
+          <text x="150" y="82" font-family="IBM Plex Mono, monospace" font-size="13" fill="var(--dim-on-ink)">Guten Tag!</text>
+          <text x="150" y="100" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--gold)">A1 → B2</text>
+          <rect x="60" y="150" width="50" height="26" rx="4" fill="none" stroke="rgba(239,231,211,0.3)"/>
+          <rect x="122" y="150" width="50" height="26" rx="4" fill="none" stroke="rgba(239,231,211,0.3)"/>
+          <rect x="184" y="150" width="50" height="26" rx="4" fill="none" stroke="var(--crimson)" stroke-width="1.5"/>
+        </svg>
+        <div class="cap"><span class="t">German Language</span><span class="n mono">CRS-02</span></div>
+      </div>
+
+      <div class="gallery-card">
+        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a mobile app being built">
+          <rect x="0" y="0" width="300" height="190" fill="var(--ink-2)"/>
+          <rect x="108" y="24" width="84" height="150" rx="14" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <rect x="118" y="42" width="64" height="96" rx="4" fill="var(--teal)" opacity="0.12"/>
+          <rect x="126" y="50" width="20" height="20" rx="4" fill="var(--teal)"/>
+          <rect x="152" y="50" width="20" height="20" rx="4" fill="var(--gold)" opacity="0.8"/>
+          <rect x="126" y="76" width="20" height="20" rx="4" fill="var(--saffron)" opacity="0.8"/>
+          <rect x="152" y="76" width="20" height="20" rx="4" fill="rgba(239,231,211,0.25)"/>
+          <rect x="126" y="110" width="46" height="8" rx="4" fill="var(--teal)" opacity="0.7"/>
+          <circle cx="150" cy="158" r="6" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <path d="M60 60 l14 14 -14 14" fill="none" stroke="rgba(239,231,211,0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M240 60 l-14 14 14 14" fill="none" stroke="rgba(239,231,211,0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="cap"><span class="t">App Development</span><span class="n mono">DEV-01</span></div>
+      </div>
+
+      <div class="gallery-card">
+        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a website layout in a browser window">
+          <rect x="0" y="0" width="300" height="190" fill="var(--ink-2)"/>
+          <rect x="46" y="34" width="208" height="126" rx="8" fill="none" stroke="var(--gold)" stroke-width="2"/>
+          <rect x="46" y="34" width="208" height="24" rx="8" fill="var(--gold)" opacity="0.14"/>
+          <circle cx="60" cy="46" r="3.5" fill="rgba(239,231,211,0.4)"/>
+          <circle cx="72" cy="46" r="3.5" fill="rgba(239,231,211,0.4)"/>
+          <circle cx="84" cy="46" r="3.5" fill="rgba(239,231,211,0.4)"/>
+          <rect x="62" y="72" width="168" height="32" rx="4" fill="var(--gold)" opacity="0.18"/>
+          <rect x="72" y="82" width="70" height="6" rx="3" fill="rgba(239,231,211,0.45)"/>
+          <rect x="72" y="92" width="46" height="5" rx="2.5" fill="rgba(239,231,211,0.25)"/>
+          <rect x="62" y="114" width="50" height="34" rx="4" fill="none" stroke="rgba(239,231,211,0.25)"/>
+          <rect x="122" y="114" width="50" height="34" rx="4" fill="none" stroke="rgba(239,231,211,0.25)"/>
+          <rect x="182" y="114" width="48" height="34" rx="4" fill="none" stroke="rgba(239,231,211,0.25)"/>
+          <path d="M218 150l10 10 16-20" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,4)"/>
+        </svg>
+        <div class="cap"><span class="t">Website Development</span><span class="n mono">WEB-01</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="board" id="courses">
+  <div class="board-head reveal">
+    <div>
+      <div class="eyebrow">This Term's Board</div>
+      <h2>Courses &amp; project tracks</h2>
+    </div>
+    <p class="board-note">Two batches to join, two tracks to build with. Pick a card to start the conversation.</p>
+  </div>
+  <div class="tickets">
+    <div class="ticket reveal">
+      <div class="code">CRS-01 · BATCH</div>
+      <h3>Computer Training</h3>
+      <p class="desc">MS Office, Tally with GST, programming fundamentals, and internet essentials — from zero.</p>
+      <div class="batch">Morning &amp; evening batches</div>
+    </div>
+    <div class="ticket reveal">
+      <div class="code">CRS-02 · BATCH</div>
+      <h3>German Language</h3>
+      <p class="desc">A1 to B2, spoken practice from week one, syllabus aligned to Goethe-Institut levels.</p>
+      <div class="batch">Weekday &amp; weekend batches</div>
+    </div>
+    <div class="ticket reveal">
+      <div class="code">DEV-01 · TRACK</div>
+      <h3>App Development</h3>
+      <p class="desc">Android, iOS and cross-platform apps, built to your spec and shipped to the stores.</p>
+      <div class="batch">Project-based, fixed scope</div>
+    </div>
+    <div class="ticket reveal">
+      <div class="code">WEB-01 · TRACK</div>
+      <h3>Website Development</h3>
+      <p class="desc">Business sites, portfolios, and online stores that load fast and read well on phones.</p>
+      <div class="batch">Project-based, fixed scope</div>
+    </div>
+  </div>
+</section>
+
+<section class="service" id="computer">
+  <div class="service-inner">
+    <div class="service-copy reveal">
+      <div class="service-tag mono">CRS-01 / Computer Training</div>
+      <h2>Confident on a computer, on paper too.</h2>
+      <p class="lead">A hands-on course for students and job-seekers who want real, usable computer skills — with a certificate to show for it.</p>
+      <ul class="service-list">
+        <li><span class="tick">✓</span> MS Office — Word, Excel &amp; PowerPoint</li>
+        <li><span class="tick">✓</span> Tally with GST for accounting roles</li>
+        <li><span class="tick">✓</span> Programming fundamentals in C and Python</li>
+        <li><span class="tick">✓</span> Internet, email and operating system basics</li>
+        <li><span class="tick">✓</span> Typing speed and accuracy practice</li>
+      </ul>
+    </div>
+    <div class="service-visual reveal">
+      <div class="marksheet">
+        <div class="marksheet-head">
+          <div>
+            <div class="mono" style="font-size:11px; letter-spacing:0.08em; color:var(--dim-on-ink); text-transform:uppercase;">Course Record</div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; margin-top:4px;">Computer Training</div>
+          </div>
+          <div class="stamp">VEDANG<br>VERIFIED</div>
+        </div>
+        <div class="mrow"><span>MS Office Suite</span><span class="grade">A1 → A2</span></div>
+        <div class="mrow"><span>Tally &amp; GST</span><span class="grade">A1 → B2</span></div>
+        <div class="mrow"><span>Programming Basics</span><span class="grade">Beginner OK</span></div>
+        <div class="mrow"><span>Internet &amp; OS Essentials</span><span class="grade">Included</span></div>
+        <div class="mrow"><span>Certificate Issued</span><span class="grade">On completion</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service reverse" id="german">
+  <div class="service-inner">
+    <div class="service-copy reveal">
+      <div class="flag-rule"><span></span><span></span><span></span></div>
+      <div class="service-tag mono">CRS-02 / German Language</div>
+      <h2>Sprechen Sie Deutsch? Soon, yes.</h2>
+      <p class="lead">A spoken-first German course for study, work, or visa applications — mapped to A1 through B2 so you always know where you stand.</p>
+      <div class="level-grid">
+        <div class="level"><div class="lv">A1</div><div class="desc">First words &amp; everyday phrases</div></div>
+        <div class="level"><div class="lv">A2</div><div class="desc">Simple conversation &amp; grammar</div></div>
+        <div class="level"><div class="lv">B1</div><div class="desc">Independent, work-ready German</div></div>
+        <div class="level"><div class="lv">B2</div><div class="desc">Fluent, exam &amp; interview ready</div></div>
+      </div>
+    </div>
+    <div class="service-visual reveal">
+      <div class="flashcards">
+        <div class="flashcard" tabindex="0">
+          <div class="flashcard-inner">
+            <div class="flashcard-face"><div class="de">Guten Tag</div><div class="hint">Tap to reveal</div></div>
+            <div class="flashcard-face back"><div class="en">Good day</div></div>
+          </div>
+        </div>
+        <div class="flashcard" tabindex="0">
+          <div class="flashcard-inner">
+            <div class="flashcard-face"><div class="de">Wie geht's?</div><div class="hint">Tap to reveal</div></div>
+            <div class="flashcard-face back"><div class="en">How are you?</div></div>
+          </div>
+        </div>
+        <div class="flashcard" tabindex="0">
+          <div class="flashcard-inner">
+            <div class="flashcard-face"><div class="de">Auf Wiedersehen</div><div class="hint">Tap to reveal</div></div>
+            <div class="flashcard-face back"><div class="en">Goodbye</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service" id="dev">
+  <div class="service-inner">
+    <div class="service-copy reveal">
+      <div class="service-tag mono">DEV-01 / Software &amp; App Development</div>
+      <h2>Your idea, built and shipped.</h2>
+      <p class="lead">From a rough sketch to a store-ready app or a working business tool — we scope it, build it, and hand over something you actually own.</p>
+      <ul class="service-list">
+        <li><span class="tick">✓</span> Android &amp; iOS apps</li>
+        <li><span class="tick">✓</span> Cross-platform builds (one codebase, both stores)</li>
+        <li><span class="tick">✓</span> Custom business software &amp; internal tools</li>
+        <li><span class="tick">✓</span> Post-launch support &amp; updates</li>
+      </ul>
+    </div>
+    <div class="service-visual reveal">
+      <div class="editor">
+        <div class="editor-bar">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="editor-tabs"><span class="active">build.plan</span><span>app.js</span></div>
+        </div>
+        <div class="editor-body" id="typeTarget"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service reverse" id="web">
+  <div class="service-inner">
+    <div class="service-copy reveal">
+      <div class="service-tag mono">WEB-01 / Website Development</div>
+      <h2>A website that does its job.</h2>
+      <p class="lead">Fast-loading, mobile-first sites for businesses, portfolios and online stores — built to bring people in and make it easy to say yes.</p>
+      <ul class="service-list">
+        <li><span class="tick">✓</span> Business &amp; portfolio websites</li>
+        <li><span class="tick">✓</span> Online stores &amp; booking pages</li>
+        <li><span class="tick">✓</span> Mobile-responsive, SEO-friendly builds</li>
+        <li><span class="tick">✓</span> Hosting setup &amp; ongoing support</li>
+      </ul>
+    </div>
+    <div class="service-visual reveal">
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span></span><span></span><span></span></div>
+          <div class="browser-url">https://<b>yourbusiness</b>.in</div>
+        </div>
+        <div class="browser-body">
+          <div class="bb-hero"><div class="l1"></div><div class="l2"></div></div>
+          <div class="bb-row"><div class="bb-card"></div><div class="bb-card"></div><div class="bb-card"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-grid">
+    <div class="why-item reveal">
+      <div class="num mono">01</div>
+      <h3>Learn by doing</h3>
+      <p>Courses built around practice, not just theory — you leave able to actually use what you learned.</p>
+    </div>
+    <div class="why-item reveal">
+      <div class="num mono">02</div>
+      <h3>Real project scope</h3>
+      <p>Every app and website starts with a clear, written scope — no surprises halfway through.</p>
+    </div>
+    <div class="why-item reveal">
+      <div class="num mono">03</div>
+      <h3>One team, four skills</h3>
+      <p>The people who teach the courses are the same ones building the software — training and technology, in one place.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner reveal">
+    <div class="eyebrow" style="justify-content:center;">Get in touch</div>
+    <h2>Ready to start?</h2>
+    <p class="lead">Enroll in a course, or tell us what you're trying to build. Either way, we'll get back to you within a day.</p>
+    <div class="contact-ctas">
+      <a href="mailto:info@vedanginfotech.in" class="btn btn-primary">Enroll for a Course</a>
+      <a href="mailto:info@vedanginfotech.in?subject=Project%20Enquiry" class="btn btn-outline">Discuss a Project</a>
+    </div>
+    <div class="contact-details">
+      <div class="cd-item"><div class="k">Email</div><div class="v">info@vedanginfotech.in</div></div>
+      <div class="cd-item"><div class="k">Phone</div><div class="v">+91 00000 00000</div></div>
+      <div class="cd-item"><div class="k">Location</div><div class="v">Pune, Maharashtra</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2026 Vedang Infotech. All rights reserved.</p>
+    <p>Computer Training · German Language · App Development · Website Development</p>
+  </div>
+</footer>
+
+<script>
+  // Duplicate gallery cards for a seamless scrolling loop
+  const track = document.getElementById('galleryTrack');
+  if(track && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const originals = Array.from(track.children);
+    originals.forEach(node=>{
+      const clone = node.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  }
+
+  // Scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.15 });
+  els.forEach(el=>io.observe(el));
+
+  // Flashcard tap-to-flip for touch devices
+  document.querySelectorAll('.flashcard').forEach(card=>{
+    card.addEventListener('click', ()=> card.classList.toggle('flipped'));
+    card.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.classList.toggle('flipped'); } });
+  });
+
+  // Typing animation in code editor
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const target = document.getElementById('typeTarget');
+  const lines = [
+    { html: '<span class="c1">// build.plan</span>' },
+    { html: '<span class="c2">requirement</span> : <span class="c3">"mobile app for bookings"</span>' },
+    { html: '<span class="c2">platform</span>    : <span class="c3">["android", "ios"]</span>' },
+    { html: '<span class="c2">stack</span>       : <span class="c3">"cross-platform"</span>' },
+    { html: '<span class="c2">status</span>      : <span class="c4">"in development"</span>' },
+    { html: '<span class="c1">// next: build → test → ship</span>' },
+  ];
+
+  function renderStatic(){
+    target.innerHTML = lines.map(l=>`<div>${l.html}</div>`).join('');
+  }
+
+  if(reduceMotion){
+    renderStatic();
+  } else {
+    let lineIndex = 0;
+    function typeLine(){
+      if(lineIndex >= lines.length){
+        target.innerHTML += '<span class="caret"></span>';
+        return;
+      }
+      const raw = lines[lineIndex].html;
+      const plainLen = raw.replace(/<[^>]+>/g,'').length;
+      let shown = 0;
+      const container = document.createElement('div');
+      target.appendChild(container);
+      const timer = setInterval(()=>{
+        shown++;
+        // reveal by rendering the full html once a threshold nears end (keeps tags intact)
+        const ratio = shown/plainLen;
+        if(ratio >= 1){
+          container.innerHTML = raw;
+          clearInterval(timer);
+          lineIndex++;
+          setTimeout(typeLine, 160);
+        } else {
+          container.textContent = raw.replace(/<[^>]+>/g,'').slice(0, shown);
+        }
+      }, 18);
+    }
+    // observe editor into view before typing starts
+    const editorEl = document.querySelector('.editor');
+    const editorObs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ typeLine(); editorObs.unobserve(e.target); }
+      });
+    }, { threshold:0.4 });
+    editorObs.observe(editorEl);
+  }
+</script>
+
+</body>
+</html>
